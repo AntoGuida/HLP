@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalParense", "HospitalParense\HospitalParense.csproj", "{DA958FF2-A7C7-4BBD-B0AF-E9158B5A487A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLPDatos", "HLPDatos\HLPDatos.csproj", "{15838F4F-1DD0-40D0-AA7B-3EFC80D195F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLPEntidades", "HLPEntidades\HLPEntidades.csproj", "{F32F8F81-E4AB-4016-9134-1398ADB05BFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLPNegocio", "HLPNegocio\HLPNegocio.csproj", "{3FD74149-43F8-46BD-A6F9-3EB6AB285B41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{DA958FF2-A7C7-4BBD-B0AF-E9158B5A487A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA958FF2-A7C7-4BBD-B0AF-E9158B5A487A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA958FF2-A7C7-4BBD-B0AF-E9158B5A487A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15838F4F-1DD0-40D0-AA7B-3EFC80D195F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15838F4F-1DD0-40D0-AA7B-3EFC80D195F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15838F4F-1DD0-40D0-AA7B-3EFC80D195F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15838F4F-1DD0-40D0-AA7B-3EFC80D195F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F32F8F81-E4AB-4016-9134-1398ADB05BFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F32F8F81-E4AB-4016-9134-1398ADB05BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F32F8F81-E4AB-4016-9134-1398ADB05BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F32F8F81-E4AB-4016-9134-1398ADB05BFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FD74149-43F8-46BD-A6F9-3EB6AB285B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FD74149-43F8-46BD-A6F9-3EB6AB285B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FD74149-43F8-46BD-A6F9-3EB6AB285B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FD74149-43F8-46BD-A6F9-3EB6AB285B41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
