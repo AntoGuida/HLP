@@ -1,17 +1,20 @@
-﻿using System;
+﻿using HLPDatos;
+using HLPEntidades;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HLPNegocio
 {
-    public class Paciente
+    public class GestorPaciente
     {
         public static int ultimoId = 0;
         public static int ultimoIdMasUno = 0;
 
-        public static List<Afiliado> ObtenerTodos()
+        public static List<Paciente> ObtenerTodos()
         {
             List<Afiliado> listAfiliados = new List<Afiliado>();
             SqlConnection cn = new SqlConnection();
@@ -58,8 +61,9 @@ namespace HLPNegocio
             return listAfiliados;
         }
 
-        public static void Insertar(Afiliado a)
+        public static void Insertar(Paciente p)
         {
+         
             SqlConnection cn = new SqlConnection();
             cn.ConnectionString = BaseDeDatos.cadena();
             try
@@ -69,33 +73,28 @@ namespace HLPNegocio
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandType = System.Data.CommandType.Text;
-                //agregue id_localidad AGREGARLO EN LA BD TAMBIEN!!!!!!!!
 
-                cmd.CommandText = @" INSERT INTO Afiliado (apellido, nombre, calle, numero, id_barrio,id_localidad, telefono, fecha_nacimiento ,sexo, monto, afiliado_adicional, tipo_doc, documento) VALUES (@apellido, @nombre, @calle, @numero,  @id_barrio, @telefono, @fecha_nacimiento, @sexo, @monto, @afiliado_adicional, @tipo_doc, @documento, @id_localidad)";
+                cmd.CommandText = @" INSERT INTO Paciente (apellido, nombre, domicilio, telefono, id_barrio, id_sexo, id_tipo_doc, num_doc, fecha_nacimiento ) VALUES (@apellido, @nombre, @domicilio,@telefono, @id_barrio, @id_sexo, @id_tipo_doc, @num_doc, @fecha_nacimiento)";
 
-                cmd.Parameters.AddWithValue("@apellido", a.apellido);
-                cmd.Parameters.AddWithValue("@nombre", a.nombre);
-                cmd.Parameters.AddWithValue("@tipo_doc", a.tipo_doc);
-                cmd.Parameters.AddWithValue("@documento", a.documento);
-                cmd.Parameters.AddWithValue("@fecha_nacimiento", a.fechaNacimiento);
-                cmd.Parameters.AddWithValue("@calle", a.calle);
-                cmd.Parameters.AddWithValue("@sexo", a.sexo);
-                cmd.Parameters.AddWithValue("@monto", a.montoInscripcion);
-                cmd.Parameters.AddWithValue("@afiliado_adicional", a.afiliadoAdicional);
-                cmd.Parameters.AddWithValue("@id_localidad", a.id_localidad);
-
-                if (a.nro.HasValue)
-                    cmd.Parameters.AddWithValue("@numero", a.nro);
+                cmd.Parameters.AddWithValue("@apellido", p.apellido);
+                cmd.Parameters.AddWithValue("@nombre", p.nombre);
+                cmd.Parameters.AddWithValue("@domicilio", p.domicilio);
+                cmd.Parameters.AddWithValue("@id_sexo", p.id_sexo);
+                cmd.Parameters.AddWithValue("@id_tipo_doc", p.id_tipo_doc);
+                cmd.Parameters.AddWithValue("@fecha_nacimiento", p.fecha_nacimiento);
+                
+                if (p.num_doc.HasValue)
+                    cmd.Parameters.AddWithValue("@num_doc", p.num_doc);
                 else
-                    cmd.Parameters.AddWithValue("@numero", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@num_doc", DBNull.Value);
 
-                if (a.id_barrio != null)
-                    cmd.Parameters.AddWithValue("@id_barrio", a.id_barrio);
+                if (p.id_barrio != null)
+                    cmd.Parameters.AddWithValue("@id_barrio", p.id_barrio);
                 else
                     cmd.Parameters.AddWithValue("@id_barrio", DBNull.Value);
 
-                if (a.telefono != null)
-                    cmd.Parameters.AddWithValue("@telefono", a.telefono);
+                if (p.telefono != null)
+                    cmd.Parameters.AddWithValue("@telefono", p.telefono);
                 else
                     cmd.Parameters.AddWithValue("@telefono", DBNull.Value);
 
@@ -107,7 +106,7 @@ namespace HLPNegocio
             catch (SqlException ex)
             {
                 // Guardar en un registro de errores para posterior depuracion
-                throw new ApplicationException("Error al insertar el afiliado");
+                throw new ApplicationException("Error al insertar paciente.");
 
             }
 
@@ -119,7 +118,7 @@ namespace HLPNegocio
             }
         }
 
-        public static void Eliminar(Afiliado a)
+        public static void Eliminar(Paciente p)
         {
             SqlConnection cn = new SqlConnection();
             cn.ConnectionString = BaseDeDatos.cadena();
@@ -130,20 +129,20 @@ namespace HLPNegocio
 
 
                 if (a == null)
-                    throw new ApplicationException("Parámetros incorrectos para la eliminacion del afiliado");
+                    throw new ApplicationException("Parámetros incorrectos para la eliminacion del paciente.");
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandType = System.Data.CommandType.Text;
                 //TODO 4 Definir el comando UPDATE de la propiedad CommandText y el parámetro
-                cmd.CommandText = "DELETE FROM Afiliado WHERE nro_afiliado = @nro_afiliado";
-                cmd.Parameters.AddWithValue("@nro_afiliado", a.nroAfiliado);
+                cmd.CommandText = "DELETE FROM PACIENTE WHERE id_paciente = @id_paciente";
+                cmd.Parameters.AddWithValue("@id_paciente", p.id_paciente);
                 cmd.ExecuteNonQuery();
             }
             catch (SqlException ex)
             {
                 // Guardar en un registro de errores para posterior depuracion
-                throw new ApplicationException("Error al eliminar el afiliado ");
+                throw new ApplicationException("Error al eliminar el paciente. ");
             }
             finally
             {
@@ -193,7 +192,7 @@ namespace HLPNegocio
         }
 
 
-        public static void Actualizar(Afiliado a)
+        public static void Actualizar(Paciente p)
         {
             SqlConnection cn = new SqlConnection();
             cn.ConnectionString = BaseDeDatos.cadena();
@@ -202,63 +201,51 @@ namespace HLPNegocio
                 cn.Open();
                 // Verificar si cli.cod_cliente tiene un valor distinto de nulo, si es nulo disparar una excepcion
                 if (a == null)
-                    throw new ApplicationException("Parámetros incorrectos para la actualización de afiliado");
+                    throw new ApplicationException("Parámetros incorrectos para la actualización del paciente.");
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandType = System.Data.CommandType.Text;
                 //TODO 4 Definir el comando UPDATE de la propiedad CommandText y el parámetro
-                cmd.CommandText = @"UPDATE Afiliado
+                cmd.CommandText = @"UPDATE Paciente
                                     SET nombre =@nombre, 
                                         apellido =@apellido, 
-                                        tipo_doc=@tipo_doc,
-                                        documento=@documento,
+                                        id_tipo_doc=@id_tipo_doc,
+                                        num_doc=@num_doc,
                                         telefono =@telefono, 
-                                       monto=@monto,
-                                    fecha_nacimiento =@fecha_nacimiento, 
-                                        calle =@calle, 
-                                        numero =@nro, 
-                                         afiliado_adicional=@afiliado_adicional,
-                                        sexo=@sexo,
+                                        fecha_nacimiento =@fecha_nacimiento, 
+                                        domicilio=@domicilio, 
+                                        id_sexo=@id_sexo,
                                         id_barrio = @id_barrio,
-                                         id_localidad= @id_localidad,
-                                     WHERE nro_afiliado=@nro_afiliado";
+                                     WHERE id_paciente=@id_paciente";
 
+                cmd.Parameters.AddWithValue("@apellido", p.apellido);
+                cmd.Parameters.AddWithValue("@nombre", p.nombre);
+                cmd.Parameters.AddWithValue("@domicilio", p.domicilio);
+                cmd.Parameters.AddWithValue("@id_sexo", p.id_sexo);
+                cmd.Parameters.AddWithValue("@id_tipo_doc", p.id_tipo_doc);
+                cmd.Parameters.AddWithValue("@fecha_nacimiento", p.fecha_nacimiento);
 
-                cmd.Parameters.AddWithValue("@apellido", a.apellido);
-                cmd.Parameters.AddWithValue("@nombre", a.nombre);
-                cmd.Parameters.AddWithValue("@tipo_doc", a.tipo_doc);
-                cmd.Parameters.AddWithValue("@documento", a.documento);
-                cmd.Parameters.AddWithValue("@fecha_nacimiento", a.fechaNacimiento);
-                cmd.Parameters.AddWithValue("@calle", a.calle);
-                cmd.Parameters.AddWithValue("@sexo", a.sexo);
-                cmd.Parameters.AddWithValue("@monto", a.montoInscripcion);
-                cmd.Parameters.AddWithValue("@afiliado_adicional", a.afiliadoAdicional);
-                cmd.Parameters.AddWithValue("@id_localidad", a.id_localidad);
-
-                if (a.nro.HasValue)
-                    cmd.Parameters.AddWithValue("@numero", a.nro);
+                if (p.num_doc.HasValue)
+                    cmd.Parameters.AddWithValue("@num_doc", p.num_doc);
                 else
-                    cmd.Parameters.AddWithValue("@numero", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@num_doc", DBNull.Value);
 
-                if (a.id_barrio != null)
-                    cmd.Parameters.AddWithValue("@id_barrio", a.id_barrio);
+                if (p.id_barrio != null)
+                    cmd.Parameters.AddWithValue("@id_barrio", p.id_barrio);
                 else
                     cmd.Parameters.AddWithValue("@id_barrio", DBNull.Value);
 
-                if (a.telefono != null)
-                    cmd.Parameters.AddWithValue("@telefono", a.telefono);
+                if (p.telefono != null)
+                    cmd.Parameters.AddWithValue("@telefono", p.telefono);
                 else
                     cmd.Parameters.AddWithValue("@telefono", DBNull.Value);
-
-
-
                 cmd.ExecuteNonQuery();
             }
             catch (SqlException ex)
             {
                 // Guardar en un registro de errores para posterior depuracion
-                throw new ApplicationException("Error al actualizar el afiliado ");
+                throw new ApplicationException("Error al actualizar el paciente.");
             }
             finally
             {
