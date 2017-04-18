@@ -103,13 +103,13 @@ namespace HospitalParense {
         protected global::System.Web.UI.WebControls.Label lblAccion;
         
         /// <summary>
-        /// Control txtIdCliente.
+        /// Control txtApellido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIdCliente;
+        protected global::System.Web.UI.WebControls.TextBox txtApellido;
         
         /// <summary>
         /// Control txtNombre.
@@ -121,13 +121,22 @@ namespace HospitalParense {
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
         
         /// <summary>
-        /// Control radSexo.
+        /// Control ddlTipoDoc.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList radSexo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoDoc;
+        
+        /// <summary>
+        /// Control txtNroDoc.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNroDoc;
         
         /// <summary>
         /// Control txtFechaNacimiento.
@@ -139,40 +148,58 @@ namespace HospitalParense {
         protected global::System.Web.UI.WebControls.TextBox txtFechaNacimiento;
         
         /// <summary>
-        /// Control txtCuit.
+        /// Control radSexo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCuit;
+        protected global::System.Web.UI.WebControls.RadioButtonList radSexo;
         
         /// <summary>
-        /// Control chkTieneCasaPropia.
+        /// Control txtDomicilio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkTieneCasaPropia;
+        protected global::System.Web.UI.WebControls.TextBox txtDomicilio;
         
         /// <summary>
-        /// Control txtCreditoMaximo.
+        /// Control ddlProvincia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCreditoMaximo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProvincia;
         
         /// <summary>
-        /// Control ddlProvincias.
+        /// Control ddlLocalidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProvincias;
+        protected global::System.Web.UI.WebControls.DropDownList ddlLocalidad;
+        
+        /// <summary>
+        /// Control ddlBarrio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlBarrio;
+        
+        /// <summary>
+        /// Control txtTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTelefono;
         
         /// <summary>
         /// Control butGrabar.

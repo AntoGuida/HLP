@@ -1,16 +1,14 @@
 ﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegistrarPaciente.aspx.cs" Inherits="HospitalParense.About" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-</asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
 
     <asp:Panel ID="pnlConsulta" runat="server">
         <div>
             <h3>Clientes</h3>
             <hr />
             <div class="form-group">
-                <label class="control-label col-sm-2" for="txtNombreBuscar">Nombre a buscar:</label>
+                <label class="control-label col-sm-2" for="txtNombreBuscar">Paciente a buscar:</label>
                 <div class="col-sm-8">
                     <asp:TextBox runat="server" ClientIDMode="Static" class="form-control" ID="txtNombreBuscar" />
                 </div>
@@ -40,22 +38,53 @@
             <h3>Clientes
                 <asp:Label CssClass="warning" ID="lblAccion" runat="server" Text="Agregando..."></asp:Label></h3>
             <hr />
+
             <div class="form-group">
-                <label class="control-label col-sm-2" for="IdCliente">IdCliente:</label>
+                <label class="control-label col-sm-2" for="Apellido">Apellido:</label>
                 <div class="col-sm-10">
-                    <asp:TextBox runat="server" ClientIDMode="Static" Enabled="false" class="form-control" ID="txtIdCliente" />
+                    <asp:TextBox runat="server" Apellido="Static" class="form-control" ID="txtApellido"  placeholder="Ingrese apellido"  />
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="control-label col-sm-2" for="ApellidoNombre">Nombre:</label>
+                <label class="control-label col-sm-2" for="Nombre">Nombre:</label>
                 <div class="col-sm-10">
-                    <asp:TextBox runat="server" ClientIDMode="Static" class="form-control" ID="txtNombre" placeholder="ingrese apellido y nombre" />
+                    <asp:TextBox runat="server" ClientIDMode="Static" class="form-control" ID="txtNombre" placeholder="Ingrese nombre" />
                     <%--<input type="text" class="form-control" id="ApellidoNombre" placeholder="ingrese apellido y nombre" required="required"/>--%>
                 </div>
             </div>
 
             <div class="form-group">
+                <label class="control-label col-sm-2" for="TipoDoc">Tipo Doc:</label>
+                <div class="col-sm-10">
+                    <%--<select class="form-control" name="Provincia">
+                        <option selected="selected" value="X">CORDOBA</option>
+                        <option value="B">BUENOS AIRES</option>
+                        <option value="S">SANTA FE</option>
+                        <option value="P">LA PAMPA</option>
+                    </select>--%>
+                    <asp:DropDownList class="form-control" ID="ddlTipoDoc" runat="server" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="NroDoc">Número Doc:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox runat="server" ClientIDMode="Static" class="form-control" ID="txtNroDoc" />
+                    <%--<input type="text" class="form-control" id="ApellidoNombre" placeholder="ingrese apellido y nombre" required="required"/>--%>
+                </div>
+            </div>
+           
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="txtFechaNacimiento">Fecha de nacimiento:</label>
+                <div class="col-sm-10">
+                    <%--<input class="form-control" type='date' id='FechaNacimiento' />--%>
+                    <asp:TextBox CssClass="form-control tipoFecha" ID="txtFechaNacimiento" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+             <div class="form-group">
                 <label class="control-label col-sm-2" for="sexo">Sexo:</label>
                 <div class="controls radio col-sm-10">
                     <label class="radio-inline">
@@ -68,40 +97,15 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label col-sm-2" for="txtFechaNacimiento">Fecha de nacimiento:</label>
-                <div class="col-sm-10">
-                    <%--<input class="form-control" type='date' id='FechaNacimiento' />--%>
-                    <asp:TextBox CssClass="form-control tipoFecha" ID="txtFechaNacimiento" runat="server"></asp:TextBox>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="txtCuit">Cuit:</label>
+                <label class="control-label col-sm-2" for="txtDomicilio">Domicilio:</label>
                 <div class="col-sm-10">
                     <%--<input class="form-control" type='number' id='cuit' />--%>
-                    <asp:TextBox class="form-control" ID="txtCuit" runat="server"></asp:TextBox>
+                    <asp:TextBox class="form-control" ID="txtDomicilio" runat="server"></asp:TextBox>
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="col-sm-10 col-sm-offset-2">
-                    <div class="checkbox">
-                        <label>
-                            <%--<input type="checkbox" id="chkTieneCasaPropia" checked="checked" />
-                            Tiene Casa Propia--%>
-                            <asp:CheckBox ID="chkTieneCasaPropia" runat="server" Text="Tiene Casa Propia" />
-                        </label>
-                    </div>
-                </div>
-            </div>
+                  
 
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="CreditoMaximo">Credito Maximo:</label>
-                <div class="col-sm-10">
-                    <%--<input class="form-control" type='number' id='CreditoMaximo' />--%>
-                    <asp:TextBox class="form-control" ID="txtCreditoMaximo" runat="server"></asp:TextBox>
-                </div>
-            </div>
 
             <div class="form-group">
                 <label class="control-label col-sm-2" for="Provincia">Provincia:</label>
@@ -112,10 +116,44 @@
                         <option value="S">SANTA FE</option>
                         <option value="P">LA PAMPA</option>
                     </select>--%>
-                    <asp:DropDownList class="form-control" ID="ddlProvincias" runat="server" />
+                    <asp:DropDownList class="form-control" ID="ddlProvincia" runat="server" />
                 </div>
             </div>
 
+             <div class="form-group">
+                <label class="control-label col-sm-2" for="Localidad">Localidad:</label>
+                <div class="col-sm-10">
+                    <%--<select class="form-control" name="Provincia">
+                        <option selected="selected" value="X">CORDOBA</option>
+                        <option value="B">BUENOS AIRES</option>
+                        <option value="S">SANTA FE</option>
+                        <option value="P">LA PAMPA</option>
+                    </select>--%>
+                    <br />
+                    <asp:DropDownList class="form-control" ID="ddlLocalidad" runat="server" />
+                </div>
+            </div>
+
+             <div class="form-group">
+                <label class="control-label col-sm-2" for="Barrio">Barrio:</label>
+                <div class="col-sm-10">
+                    <%--<select class="form-control" name="Provincia">
+                        <option selected="selected" value="X">CORDOBA</option>
+                        <option value="B">BUENOS AIRES</option>
+                        <option value="S">SANTA FE</option>
+                        <option value="P">LA PAMPA</option>
+                    </select>--%>
+                    <asp:DropDownList class="form-control" ID="ddlBarrio" runat="server" />
+                </div>
+            </div>
+
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="txtTelefono">Teléfono:</label>
+                <div class="col-sm-10">
+                    <%--<input class="form-control" type='number' id='cuit' />--%>
+                    <asp:TextBox class="form-control" ID="txtTelefono" runat="server"></asp:TextBox>
+                </div>
+            </div>
 
             <div class="form-group">
                 <div class="col-sm-10 col-sm-offset-2">
