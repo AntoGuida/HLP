@@ -1,0 +1,5 @@
+C:\Users\janet\Downloads\HLP\ENTIDADES\bin\Debug\ENTIDADES.dll
+C:\Users\janet\Downloads\HLP\ENTIDADES\bin\Debug\ENTIDADES.pdb
+C:\Users\janet\Downloads\HLP\ENTIDADES\obj\Debug\ENTIDADES.dll
+C:\Users\janet\Downloads\HLP\ENTIDADES\obj\Debug\ENTIDADES.pdb
+C:\Users\janet\Downloads\HLP\ENTIDADES\obj\Debug\ENTIDADES.csprojResolveAssemblyReference.cache
