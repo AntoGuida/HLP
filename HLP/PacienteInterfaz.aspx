@@ -1,32 +1,24 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PacienteInterfaz.aspx.cs" Inherits="HLP.PacienteInterfaz" EnableEventValidation="true" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="PacienteInterfaz.aspx.cs" Inherits="HLP.PacienteInterfaz" EnableEventValidation="true" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type"  content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+     <div>
             <asp:Panel ID="pnlConsulta" runat="server">
+                
                 <h3>PACIENTE</h3>
                 
             </asp:Panel>
-        </div>
-  
-     <asp:Panel ID="pnlEdicion" runat="server">
+     </div>
+    <asp:Panel ID="pnlEdicion" runat="server">
         <div class="form-horizontal">
             <hr />
 
             <div class="form-group">                
                 <div class="col-sm-10">    
                     <label class="control-label col-sm-2" for="TipoDoc">Tipo Doc:</label>
-                    <asp:DropDownList Cssclass="form-control" ID="ddlTipoDoc" runat="server" />
+                    <asp:DropDownList Cssclass="form-control" ID="ddlTipoDoc" runat="server" OnSelectedIndexChanged="ddlTipoDoc_SelectedIndexChanged" />
                      <label class="control-label col-sm-2" for="NroDoc">Número Doc:</label>
-                    <asp:TextBox runat="server" ClientIDMode="Static" class="form-control" ID="txtNroDoc" />
-                      <asp:RequiredFieldValidator ID="rfvNroDoc"
+                    <asp:TextBox runat="server" ClientIDMode="Static" CssClass="textbox" ID="txtNroDoc" />
+                     &nbsp;<asp:RequiredFieldValidator ID="rfvNroDoc"
                             runat="server"
                             ControlToValidate="txtNroDoc"
                             ErrorMessage="Ingrese número de documento..."
@@ -36,15 +28,15 @@
                 </div>
             </div>
            
-            <asp:Button class="btn btn-primary" ID="btnconsultaPaciente" runat="server" OnClick="butConsultaPaciente_Click" Text="Existe" ValidationGroup="A" />
-             <asp:label runat="server" for="estado"  visible="False" ID="lblExiste" ForeColor="Red">Paciente no encontrado.</asp:label>
+            <asp:Button CssClass="btn btn-primary" ID="btnconsultaPaciente" runat="server" OnClick="butConsultaPaciente_Click" Text="Existe" ValidationGroup="A" />
+             <asp:label runat="server"  visible="False" ID="lblExiste" ForeColor="Red">Paciente no encontrado.</asp:label>
 
             <div class="form-group">
                   <div class="col-sm-10">
                        <label class="control-label col-sm-2" for="Apellido">Apellido:</label>
-                    <asp:TextBox runat="server" Apellido="Static" Cssclass="form-control" ID="txtApellido"  placeholder="Ingrese apellido"  />
+                    <asp:TextBox runat="server"  CssClass="form-control" ID="txtApellido"  PlaceHolder="Ingrese apellido"  />
                       <label class="control-label col-sm-2" for="Nombre">Nombre:</label>
-                    <asp:TextBox runat="server" ClientIDMode="Static" class="form-control" ID="txtNombre" placeholder="Ingrese nombre" Width="223px" />
+                    <asp:TextBox runat="server"  CssClass="form-control" ID="txtNombre" placeholder="Ingrese nombre" Width="223px" />
                        <br />
                 </div>
             </div>
@@ -58,10 +50,10 @@
                 <label class="control-label col-sm-2" for="Sexo">
                 Sexo:</label>
                 <div class="col-sm-10">
-                    <asp:DropDownList ID="ddlSexo" runat="server" AutoPostBack="True" class="form-control" />
+                    <asp:DropDownList ID="ddlSexo" runat="server" AutoPostBack="True" CssClass="form-control" />
                     <label class="control-label col-sm-2" for="txtFechaNacimiento">
                     Fecha de nacimiento:</label>
-                    <asp:TextBox ID="txtFechaNacimiento" runat="server" type="date" Width="165px"></asp:TextBox>
+                    <asp:TextBox ID="txtFechaNacimiento" runat="server"  Width="165px"></asp:TextBox>
                     <br />
                 </div>
             </div>
@@ -138,7 +130,7 @@
 
             <div class="form-group">
                 <div class="col-sm-10 col-sm-offset-2">
-                    <asp:Button class="btn btn-primary" ID="butGrabar" runat="server" OnClick="butGrabar_Click" Text="Guardar" />
+                    <asp:Button class="button" ID="butGrabar" runat="server" OnClick="butGrabar_Click" Text="Guardar" />
                     <asp:label runat="server" for="estado"  visible="False" ID="lblGuardar" ForeColor="Red">Paciente registrado con éxito!</asp:label>
                     <%--<asp:Button class="btn btn-primary" ID="butEliminarConfirmar" runat="server"
                         OnClick="butEliminarConfirmar_Click" Text="Confirmar Eliminacion"
@@ -154,7 +146,6 @@
 
         </div>
     </asp:Panel>
-        </div>
-    </form>
-</body>
-</html>
+</asp:Content>
+
+

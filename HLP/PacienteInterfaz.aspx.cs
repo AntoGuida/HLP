@@ -207,6 +207,9 @@ namespace HLP
 
         }
 
+        protected void ddlTipoDoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
