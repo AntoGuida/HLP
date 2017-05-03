@@ -36,7 +36,7 @@
                        <label class="control-label col-sm-2" for="Apellido">Apellido:</label>
                     <asp:TextBox runat="server"  CssClass="form-control" ID="txtApellido"  PlaceHolder="Ingrese apellido"  />
                       <label class="control-label col-sm-2" for="Nombre">Nombre:</label>
-                    <asp:TextBox runat="server"  CssClass="form-control" ID="txtNombre" placeholder="Ingrese nombre" Width="223px" />
+                    <asp:TextBox runat="server"  CssClass="form-control" ID="txtNombre" placeholder="Ingrese nombre" Width="120px" />
                        <br />
                 </div>
             </div>
@@ -81,7 +81,6 @@
                 <label class="control-label col-sm-2" for="Localidad">Localidad:</label>
                 <asp:DropDownList class="form-control" ID="ddlLocalidad" runat="server" OnSelectedIndexChanged="ddlLocalidad_SelectedIndexChanged" AutoPostBack="True" />
                 <label class="control-label col-sm-2" for="Barrio">Barrio:</label>
-                <asp:DropDownList class="form-control" ID="ddlBarrio" runat="server" AutoPostBack="True" />
                 <br />
                 <div class="col-sm-10">
                 </div>
