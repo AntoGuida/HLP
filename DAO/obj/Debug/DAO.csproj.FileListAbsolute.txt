@@ -5,3 +5,10 @@ C:\Users\janet\Downloads\HLP\DAO\bin\Debug\ENTIDADES.pdb
 C:\Users\janet\Downloads\HLP\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
 C:\Users\janet\Downloads\HLP\DAO\obj\Debug\DAO.dll
 C:\Users\janet\Downloads\HLP\DAO\obj\Debug\DAO.pdb
+C:\Users\janet\Desktop\HLP\HLP\DAO\bin\Debug\DAO.dll
+C:\Users\janet\Desktop\HLP\HLP\DAO\bin\Debug\DAO.pdb
+C:\Users\janet\Desktop\HLP\HLP\DAO\bin\Debug\ENTIDADES.dll
+C:\Users\janet\Desktop\HLP\HLP\DAO\bin\Debug\ENTIDADES.pdb
+C:\Users\janet\Desktop\HLP\HLP\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
+C:\Users\janet\Desktop\HLP\HLP\DAO\obj\Debug\DAO.dll
+C:\Users\janet\Desktop\HLP\HLP\DAO\obj\Debug\DAO.pdb

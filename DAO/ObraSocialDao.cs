@@ -40,5 +40,36 @@ namespace DAO
             c.cerrarConexion();
             return listObraSocial;
         }
+
+        public static List<String> VectorObraSocial()
+        {
+            
+            List<String> listObraSocial = null;
+            //1. Abrir la conexion
+            Conexion c = new Conexion();
+            SqlConnection cnn = c.abrirConexion();
+
+            //2. Crear el objeto command para ejecutar el insert
+            SqlCommand cmm = new SqlCommand();
+            cmm.Connection = cnn;
+
+            cmm.CommandText = @"SELECT id_obra_social
+                                      ,nombre                                     
+                                FROM ObraSocial";
+            SqlDataReader dr = cmm.ExecuteReader();
+            while (dr.Read())
+            {
+                listObraSocial.Add(dr["nombre"].ToString());
+               
+            }
+            dr.Close();
+            //3.Cerrar conexion y retornar datareader
+            c.cerrarConexion();
+            return listObraSocial;
+
+         
+        }
+
+
     }
 }

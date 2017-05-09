@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -45,7 +46,6 @@ namespace HLP
             txtTelefono.Text = "";
             txtEmail.Text = "";
             txtNroObraSocial.Text = "";
-            txtAntecedentes.Text = "";
             txtDomicilio.Text = "";
 
         }
@@ -65,7 +65,6 @@ namespace HLP
             txtTelefono.Text = "";
             txtEmail.Text = "";
             txtNroObraSocial.Text = "";
-            txtAntecedentes.Text = "";
             txtDomicilio.Text = "";
 
         }
@@ -85,7 +84,6 @@ namespace HLP
             emp.id_sexo = int.Parse(ddlSexo.SelectedValue);
             emp.id_tipo_doc = int.Parse(ddlTipoDoc.SelectedValue);
             emp.num_documento = int.Parse(txtNroDoc.Text);
-            emp.antecedentes = txtAntecedentes.Text;
             emp.id_obra_social = int.Parse(ddlObraSocial.SelectedValue);
             emp.email = txtEmail.Text;
             emp.nro_obra_social = txtNroObraSocial.Text;
@@ -201,7 +199,6 @@ namespace HLP
                 txtEmail.Text = p.email;
                 ddlObraSocial.SelectedValue = p.id_obra_social.ToString();
                 txtNroObraSocial.Text = p.nro_obra_social.ToString();
-                txtAntecedentes.Text = p.antecedentes;
 
             }
 
@@ -211,5 +208,29 @@ namespace HLP
         {
 
         }
+
+        protected void butEliminarCofirmar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //[System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
+        //public static string[] GetCompletionList(String prefixText, int count)
+        //{
+        //    String[] lista;
+        //    return lista = ObraSocialDao.VectorObraSocial(prefixText, count);
+        //}
+
+
+        [WebMethod]
+        public static List<string> GetCities(string cityname)
+        {
+
+            List<String> lista = new List <String> ();
+             lista = ObraSocialDao.VectorObraSocial();
+            return lista;
+        }
+
+
     }
 }

@@ -139,6 +139,15 @@ namespace HLP {
         protected global::System.Web.UI.WebControls.DropDownList ddlLocalidad;
         
         /// <summary>
+        /// Control ddlBarrio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlBarrio;
+        
+        /// <summary>
         /// Control txtTelefono.
         /// </summary>
         /// <remarks>
@@ -166,6 +175,15 @@ namespace HLP {
         protected global::System.Web.UI.WebControls.DropDownList ddlObraSocial;
         
         /// <summary>
+        /// Control txtCity.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCity;
+        
+        /// <summary>
         /// Control txtNroObraSocial.
         /// </summary>
         /// <remarks>
@@ -173,15 +191,6 @@ namespace HLP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNroObraSocial;
-        
-        /// <summary>
-        /// Control txtAntecedentes.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAntecedentes;
         
         /// <summary>
         /// Control butGrabar.
@@ -200,5 +209,14 @@ namespace HLP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblGuardar;
+        
+        /// <summary>
+        /// Control butEliminarConfirmar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button butEliminarConfirmar;
     }
 }

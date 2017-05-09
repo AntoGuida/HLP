@@ -66,7 +66,6 @@ C:\Users\janet\Downloads\HLP\HLP\bin\es\Microsoft.AspNet.FriendlyUrls.resources.
 C:\Users\janet\Downloads\HLP\HLP\obj\Debug\HLP.csprojResolveAssemblyReference.cache
 C:\Users\janet\Downloads\HLP\HLP\obj\Debug\HLP.dll
 C:\Users\janet\Downloads\HLP\HLP\obj\Debug\HLP.pdb
-C:\Users\janet\Desktop\HLP\HLP\HLP\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\Users\janet\Desktop\HLP\HLP\HLP\bin\ApplicationInsights.config
 C:\Users\janet\Desktop\HLP\HLP\HLP\bin\roslyn\csc.exe
 C:\Users\janet\Desktop\HLP\HLP\HLP\bin\roslyn\csc.exe.config
@@ -80,6 +79,7 @@ C:\Users\janet\Desktop\HLP\HLP\HLP\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\janet\Desktop\HLP\HLP\HLP\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
 C:\Users\janet\Desktop\HLP\HLP\HLP\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\janet\Desktop\HLP\HLP\HLP\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\janet\Desktop\HLP\HLP\HLP\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\Users\janet\Desktop\HLP\HLP\HLP\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 C:\Users\janet\Desktop\HLP\HLP\HLP\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Users\janet\Desktop\HLP\HLP\HLP\bin\roslyn\System.AppContext.dll
@@ -96,6 +96,7 @@ C:\Users\janet\Desktop\HLP\HLP\HLP\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\janet\Desktop\HLP\HLP\HLP\bin\HLP.dll.config
 C:\Users\janet\Desktop\HLP\HLP\HLP\bin\HLP.dll
 C:\Users\janet\Desktop\HLP\HLP\HLP\bin\HLP.pdb
+C:\Users\janet\Desktop\HLP\HLP\HLP\bin\AjaxControlToolkit.dll
 C:\Users\janet\Desktop\HLP\HLP\HLP\bin\Antlr3.Runtime.dll
 C:\Users\janet\Desktop\HLP\HLP\HLP\bin\AspNet.ScriptManager.bootstrap.dll
 C:\Users\janet\Desktop\HLP\HLP\HLP\bin\AspNet.ScriptManager.jQuery.dll
