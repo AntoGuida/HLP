@@ -41,10 +41,10 @@ namespace DAO
             return listObraSocial;
         }
 
-        public static List<String> VectorObraSocial()
+        public static List<String> VectorObraSocial(String letra)
         {
             
-            List<String> listObraSocial = null;
+            List<String> listObraSocial = new List<string>();
             //1. Abrir la conexion
             Conexion c = new Conexion();
             SqlConnection cnn = c.abrirConexion();
@@ -55,8 +55,11 @@ namespace DAO
 
             cmm.CommandText = @"SELECT id_obra_social
                                       ,nombre                                     
-                                FROM ObraSocial";
+                                FROM ObraSocial
+                                    WHERE nombre like @letra ";
+            cmm.Parameters.AddWithValue("@letra", "%" + letra + "%");
             SqlDataReader dr = cmm.ExecuteReader();
+         
             while (dr.Read())
             {
                 listObraSocial.Add(dr["nombre"].ToString());
@@ -69,6 +72,37 @@ namespace DAO
 
          
         }
+
+        public static int ObtenerIDObraSocial(string nombre)
+        {
+            int id = 0;
+            //1. Abrir la conexion
+            Conexion c = new Conexion();
+            SqlConnection cnn = c.abrirConexion();
+
+            //2. Crear el objeto command para ejecutar el insert
+            SqlCommand cmm = new SqlCommand();
+            cmm.Connection = cnn;
+
+            cmm.CommandText = @"SELECT id_obra_social   FROM ObraSocial WHERE nombre LIKE @nombre";
+            cmm.Parameters.AddWithValue("@nombre", "%" + nombre + "%");
+            SqlDataReader dr = cmm.ExecuteReader();
+        
+            while (dr.Read())
+            {
+                
+                id= int.Parse(dr["id_obra_social"].ToString());
+             
+
+               
+
+            }
+            dr.Close();
+            //3.Cerrar conexion y retornar datareader
+            c.cerrarConexion();
+            return id;
+        }
+
 
 
     }

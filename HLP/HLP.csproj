@@ -130,6 +130,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AntecedentesInterfaz.aspx" />
+    <Content Include="ConsultaPacientesInterfaz.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -145,10 +147,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="HistoriaClinica.aspx" />
     <Content Include="images\imagen2.jpg" />
     <Content Include="images\imagen3.jpg" />
     <Content Include="images\imagen4.jpg" />
     <Content Include="Inicio.aspx" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="PacienteInterfaz.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -185,6 +189,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AntecedentesInterfaz.aspx.cs">
+      <DependentUpon>AntecedentesInterfaz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AntecedentesInterfaz.aspx.designer.cs">
+      <DependentUpon>AntecedentesInterfaz.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -194,6 +205,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ConsultaPacientesInterfaz.aspx.cs">
+      <DependentUpon>ConsultaPacientesInterfaz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultaPacientesInterfaz.aspx.designer.cs">
+      <DependentUpon>ConsultaPacientesInterfaz.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -210,6 +228,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HistoriaClinica.aspx.cs">
+      <DependentUpon>HistoriaClinica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HistoriaClinica.aspx.designer.cs">
+      <DependentUpon>HistoriaClinica.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>

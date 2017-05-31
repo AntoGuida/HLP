@@ -28,21 +28,19 @@ namespace DAO
             {
                 Paciente p = new Paciente();
 
-                //if (dr["id_paciente"] != DBNull.Value)
-                //    p.id_paciente = int.Parse(dr["id_paciente"].ToString());
-                //p.apellido= dr["apellido"].ToString();
-                //p.nombre = dr["nombre"].ToString();
-                //p.domicilio = dr["domicilio"].ToString();
-                //p.telefono = int.Parse(dr["telefono"].ToString());
-                //p.id_barrio = int.Parse(dr["id_barrio"].ToString());
+                if (dr["id_paciente"] != DBNull.Value)
+                    p.id_paciente = int.Parse(dr["id_paciente"].ToString());
+                p.apellido = dr["apellido"].ToString();
+                p.nombre = dr["nombre"].ToString();
+                p.domicilio = dr["domicilio"].ToString();
+                p.telefono = int.Parse(dr["telefono"].ToString());
+                p.id_barrio = int.Parse(dr["id_barrio"].ToString());
                 //p.id_sexo = int.Parse(dr["id_sexo"].ToString());
-                //p.id_tipo_doc = int.Parse(dr["id_tipo_doc"].ToString());
-                //p.num_documento =int.Parse(dr["num_doc"].ToString());
-                //p.fecha_nacimiento= DateTime.Parse(dr["fecha_nacimiento"].ToString());
-                //p.antecedentes= dr["antecedentes"].ToString();
-                //p.id_obrasocial = int.Parse(dr["id_obra_social"].ToString());
-                //p.email = dr["email"].ToString();
-                //p.nro_obra_social = dr["nro_obra_social"].ToString();
+                p.id_tipo_doc = int.Parse(dr["id_tipo_doc"].ToString());
+                p.num_documento = int.Parse(dr["num_doc"].ToString());
+                p.fecha_nacimiento = DateTime.Parse(dr["fecha_nacimiento"].ToString());
+                p.email = dr["email"].ToString();
+                p.nro_obra_social = dr["nro_obra_social"].ToString();
 
                 listPaciente.Add(p);
                 p = null;
@@ -59,7 +57,7 @@ namespace DAO
         public static string Insertar(Paciente e1)
         {
             string script = @"<script type='text/javascript'>
-                            alert('El componente se cargó con Exito!!');
+                            alert('El paciente se cargó con Exito!!');
                             </script>";
             try
             {
@@ -72,7 +70,7 @@ namespace DAO
                 cmd.Connection = cn;
                 cmd.CommandText = @"insert into Paciente 
                                 values(@apellido,@nombre,@domicilio,@telefono,@id_barrio,@id_sexo,@id_tipo_doc,@num_doc,@fecha_nacimiento
-                                        ,@antecedentes,@id_obra_social,@email,@nro_obra_social)";
+                                        ,@id_obra_social,@email,@nro_obra_social, @fecha_alta)";
 
 
                 cmd.Parameters.AddWithValue("@apellido", e1.apellido);
@@ -83,12 +81,11 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@id_sexo", e1.id_sexo);
                 cmd.Parameters.AddWithValue("@id_tipo_doc", e1.id_tipo_doc);
                 cmd.Parameters.AddWithValue("@num_doc", e1.num_documento);
-                cmd.Parameters.AddWithValue("@fecha_nacimiento", e1.fecha_nacimiento);
-                cmd.Parameters.AddWithValue("@antecedentes", e1.antecedentes);
+                cmd.Parameters.AddWithValue("@fecha_nacimiento", e1.fecha_nacimiento);                
                 cmd.Parameters.AddWithValue("@id_obra_social", e1.id_obra_social);
                 cmd.Parameters.AddWithValue("@email", e1.email);
                 cmd.Parameters.AddWithValue("@nro_obra_social", e1.nro_obra_social);
-
+                cmd.Parameters.AddWithValue("@fecha_alta", System.DateTime.Today);
 
                 //Cerrar siempre la conexion
                 cmd.ExecuteNonQuery();
@@ -125,13 +122,14 @@ namespace DAO
             //2. Crear el objeto command para ejecutar el insert
             SqlCommand cmm = new SqlCommand();
             cmm.Connection = cnn;
-            cmm.CommandText = @"SELECT *
+            cmm.CommandText = @"SELECT Convert(varchar(10),pac.fecha_nacimiento,103) as fecha_nacimientos, Pac.*, OS.nombre as nos, P.id_provincia as id_provincia, L.id_localidad as id_localidad
                                 FROM PACIENTE Pac
                                 INNER JOIN TipoDoc TD ON Pac.ID_TIPO_DOC=TD.ID_TIPO_DOC
                                 INNER JOIN BARRIO b ON Pac.id_barrio = b.id_barrio
                                 INNER JOIN LOCALIDAD L ON b.ID_LOCALIDAD=L.ID_LOCALIDAD
                                 INNER JOIN PROVINCIA P ON L.ID_PROVINCIA=P.ID_PROVINCIA
-                                INNER JOIN SEXO S ON Pac.ID_SEXO=S.ID_SEXO
+                                INNER JOIN SEXO S  ON Pac.ID_SEXO=S.ID_SEXO
+                                INNER JOIN OBRASOCIAL OS ON Pac.id_obra_social=OS.id_obra_social
                                 where Pac.id_tipo_doc = @id_tipo_doc and Pac.num_doc=@num_doc";
             cmm.Parameters.AddWithValue("@id_tipo_doc", id_tipo_doc);
             cmm.Parameters.AddWithValue("@num_doc", num_doc);
@@ -140,22 +138,25 @@ namespace DAO
             {
 
                 p = new Paciente();
-
+                p.nro_obra_social = dr[12].ToString();
+                p.id_paciente = int.Parse(dr["id_paciente"].ToString());
                 p.apellido = dr["apellido"].ToString();
                 p.nombre = dr["nombre"].ToString();
                 p.domicilio = dr["domicilio"].ToString();
                 p.telefono = int.Parse(dr["telefono"].ToString());
                 p.id_barrio = int.Parse(dr["id_barrio"].ToString()); //es que es de tipo barrio :/
-                p.id_sexo = int.Parse(dr["id_sexo"].ToString());
+                string pepe= (dr["id_sexo"].ToString());
+                if (pepe == "True") { p.id_sexo = 1; }
+                else p.id_sexo = 2;               
                 p.id_tipo_doc = int.Parse(dr["id_tipo_doc"].ToString());
                 p.num_documento = int.Parse(dr["num_doc"].ToString());
-                p.fecha_nacimiento = DateTime.Parse(dr["fecha_nacimiento"].ToString());
-                p.antecedentes = dr["antecedentes"].ToString();
+                p.fecha_nacimiento = DateTime.Parse(dr["fecha_nacimientos"].ToString());
                 p.id_obra_social = int.Parse(dr["id_obra_social"].ToString());
                 p.email = dr["email"].ToString();
-                p.nro_obra_social = dr["nro_obra_social"].ToString();
+                p.nombre_obra_social = dr["nos"].ToString();
                 p.id_provincia = int.Parse(dr["id_provincia"].ToString());
                 p.id_localidad = int.Parse(dr["id_localidad"].ToString());
+                
 
 
             }
@@ -163,6 +164,91 @@ namespace DAO
             c.cerrarConexion();
             return p;
         }
+
+        public static Paciente ObtenerPorID(int id_paciente)
+        {
+            Paciente p = null;
+            //1. Abrir la conexion
+            Conexion c = new Conexion();
+            SqlConnection cnn = c.abrirConexion();
+
+            //2. Crear el objeto command para ejecutar el insert
+            SqlCommand cmm = new SqlCommand();
+            cmm.Connection = cnn;
+            cmm.CommandText = @"SELECT Pac.*, OS.nombre as nos, P.id_provincia as id_provincia, L.id_localidad as id_localidad
+                                FROM PACIENTE Pac
+                                INNER JOIN TipoDoc TD ON Pac.ID_TIPO_DOC=TD.ID_TIPO_DOC
+                                INNER JOIN BARRIO b ON Pac.id_barrio = b.id_barrio
+                                INNER JOIN LOCALIDAD L ON b.ID_LOCALIDAD=L.ID_LOCALIDAD
+                                INNER JOIN PROVINCIA P ON L.ID_PROVINCIA=P.ID_PROVINCIA
+                                INNER JOIN SEXO S  ON Pac.ID_SEXO=S.ID_SEXO
+                                INNER JOIN OBRASOCIAL OS ON Pac.id_obra_social=OS.id_obra_social
+                                where Pac.id_paciente=@id_paciente";
+            cmm.Parameters.AddWithValue("@id_paciente", id_paciente);
+            SqlDataReader dr = cmm.ExecuteReader();
+            if (dr.Read())
+            {
+
+                p = new Paciente();
+
+                p.id_paciente = int.Parse(dr["id_paciente"].ToString());
+                p.nombre = dr["nombre"].ToString();
+                p.apellido = dr["apellido"].ToString();
+          
+
+
+
+            }
+            dr.Close();
+            c.cerrarConexion();
+            return p;
+        }
+
+        public static List<AntXPac> ObtenerPacConAntecedentes(int id_tipo_doc, int num_doc)
+        {
+            AntXPac paciente = null;
+            List<AntXPac> lista = new List<AntXPac>();
+
+            //1. Abrir la conexion
+            Conexion c = new Conexion();
+            SqlConnection cnn = c.abrirConexion();
+
+            //2. Crear el objeto command para ejecutar el insert
+            SqlCommand cmm = new SqlCommand();
+            cmm.Connection = cnn;
+            cmm.CommandText = @"SELECT axp.id_paciente as id_paciente, Pac.nombre as nombrePac, axp.id_antecedente as id_antecedente, A.nombre as nombreAnte
+                                FROM PACIENTE Pac
+                                INNER JOIN TipoDoc TD ON Pac.ID_TIPO_DOC=TD.ID_TIPO_DOC
+                                INNER JOIN BARRIO b ON Pac.id_barrio = b.id_barrio
+                                INNER JOIN LOCALIDAD L ON b.ID_LOCALIDAD=L.ID_LOCALIDAD
+                                INNER JOIN PROVINCIA P ON L.ID_PROVINCIA=P.ID_PROVINCIA
+                                INNER JOIN SEXO S  ON Pac.ID_SEXO=S.ID_SEXO
+                                INNER JOIN OBRASOCIAL OS ON Pac.id_obra_social=OS.id_obra_social
+                                INNER JOIN ANTECXPAC axp ON Pac.id_paciente=axp.id_paciente
+                                INNER JOIN ANTECEDENTE A ON axp.id_antecedente=A.id_antecedente
+                                where Pac.id_tipo_doc = @id_tipo_doc and Pac.num_doc=@num_doc";
+            cmm.Parameters.AddWithValue("@id_tipo_doc", id_tipo_doc);
+            cmm.Parameters.AddWithValue("@num_doc", num_doc);
+            SqlDataReader dr = cmm.ExecuteReader();
+            while (dr.Read())
+            {
+
+                paciente = new AntXPac();
+            
+                paciente.id_paciente= int.Parse(dr["id_paciente"].ToString());
+                paciente.nombreAnte = dr["nombreAnte"].ToString();            
+                paciente.id_antecedente= int.Parse(dr["id_antecedente"].ToString());           
+                paciente.nombrePaciente = dr["nombrePac"].ToString();
+
+                lista.Add(paciente);
+
+
+            }
+            dr.Close();
+            c.cerrarConexion();
+            return lista;
+        }
+
 
     }
 }

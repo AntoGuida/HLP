@@ -17,7 +17,7 @@
              </style>
     </head>
     <body>
-        <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp HOSPITAL PARENSE</h1>
+        <h1 class="text-center" style="width: auto; height: auto; top: auto; right: auto; bottom: auto; left: auto">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HOSPITAL PARENSE</h1>
         <div class="container">
             <br>
             <div id="myCarousel" class="carousel slide" data-ride="carousel">

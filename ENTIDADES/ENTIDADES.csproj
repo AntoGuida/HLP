@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Antecedentes.cs" />
+    <Compile Include="AntXPac.cs" />
     <Compile Include="Barrio.cs" />
     <Compile Include="HistoriaClinica.cs" />
     <Compile Include="Localidad.cs" />

@@ -8,14 +8,14 @@ using System.Data.SqlClient;
 
 namespace DAO
 {
-    class Conexion
+ public   class Conexion
     {
-        private SqlConnection con { get; set; }
+        public SqlConnection con { get; set; }
 
-        private string cadenaConexion()
+      public   string cadenaConexion()
         {
             
-            return @"Data Source=DESKTOP-CN55RJ1\SQLSERVER;Initial Catalog=OscorPav2;Integrated Security=True";
+            return @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=OscorPav2;Integrated Security=True";
         }
 
         //metodo para obtener conexion

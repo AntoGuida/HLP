@@ -12,3 +12,10 @@ C:\Users\janet\Desktop\HLP\HLP\DAO\bin\Debug\ENTIDADES.pdb
 C:\Users\janet\Desktop\HLP\HLP\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
 C:\Users\janet\Desktop\HLP\HLP\DAO\obj\Debug\DAO.dll
 C:\Users\janet\Desktop\HLP\HLP\DAO\obj\Debug\DAO.pdb
+C:\Users\Janet\Documents\HLP\HLP\DAO\bin\Debug\DAO.dll
+C:\Users\Janet\Documents\HLP\HLP\DAO\bin\Debug\DAO.pdb
+C:\Users\Janet\Documents\HLP\HLP\DAO\bin\Debug\ENTIDADES.dll
+C:\Users\Janet\Documents\HLP\HLP\DAO\bin\Debug\ENTIDADES.pdb
+C:\Users\Janet\Documents\HLP\HLP\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
+C:\Users\Janet\Documents\HLP\HLP\DAO\obj\Debug\DAO.dll
+C:\Users\Janet\Documents\HLP\HLP\DAO\obj\Debug\DAO.pdb

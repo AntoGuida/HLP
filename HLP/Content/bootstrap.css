@@ -860,6 +860,8 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+    top: 0px;
+    left: 0px;
 }
 
 .col-xs-1,
@@ -1721,9 +1723,9 @@ input[type="number"]::-webkit-inner-spin-button {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #dd3333;
+  color: #000;
   vertical-align: middle;
-  background-color: #dbcbcb;
+  background-color: #e5e5e5;
   border: 1px solid #cccccc;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -1967,6 +1969,10 @@ textarea.input-lg {
 .form-horizontal .form-group {
   margin-right: -15px;
   margin-left: -15px;
+    top: 0px;
+    left: 0px;
+    height: 364px;
+    width: 267px;
 }
 
 .form-horizontal .form-group:before,

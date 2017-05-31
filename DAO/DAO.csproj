@@ -40,12 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Antecedente.cs" />
+    <Compile Include="AntXPacDao.cs" />
     <Compile Include="BarrioDao.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="EspecialidadDao.cs" />
     <Compile Include="HistoriaClinicaDao.cs" />
     <Compile Include="LocalidadDao.cs" />
+    <Compile Include="MedicoDao.cs" />
     <Compile Include="ObraSocialDao.cs" />
     <Compile Include="PacienteDao.cs" />
+    <Compile Include="PracticaDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvinciaDao.cs" />
     <Compile Include="SexoDao.cs" />

@@ -9,7 +9,7 @@ namespace ENTIDADES
     public class Paciente
     {
 
-        public int? id_paciente { get; set; }
+        public int id_paciente { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
         public string domicilio { get; set; }
@@ -24,9 +24,13 @@ namespace ENTIDADES
         public int id_tipo_doc { get; set; }
         public int num_documento { get; set; }
         public string email { get; set; }
+
         public string nro_obra_social { get; set; }
+
         public int id_obra_social { get; set; }
-        public string antecedentes { get; set; }
+
+        public string nombre_obra_social { get; set; }
+
 
         public int? id_provincia { get; set; }
 
