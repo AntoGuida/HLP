@@ -14,6 +14,8 @@ namespace ENTIDADES
 
         public string nombrePaciente { set; get; }
 
+        public string apellidoPaciente { set; get; }
+
         public string nombreAnte { set; get; }
     }
 }

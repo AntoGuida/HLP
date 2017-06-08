@@ -75,49 +75,69 @@ namespace HLP
 
         protected void butGrabar_Click(object sender, EventArgs e)
         {
-            Paciente emp = new Paciente();
-            if (txtApellido.Text != String.Empty)
-            { emp.apellido = txtApellido.Text; }
-            if (txtNombre.Text != String.Empty)
-            { emp.nombre = txtNombre.Text; }
-            if (txtDomicilio.Text != String.Empty)
-            { emp.domicilio = txtDomicilio.Text; }
-            if (txtTelefono.Text != String.Empty)
-            { emp.telefono = int.Parse(txtTelefono.Text); }
-            if(txtFechaNacimiento.Text != String.Empty)
+            if(Page.IsValid)
             {
-                DateTime fecha;
-                if (DateTime.TryParse(txtFechaNacimiento.Text, out fecha))
-                    emp.fecha_nacimiento = fecha;
+                if (PacienteDao.ExistePaciente(int.Parse(ddlTipoDoc.SelectedValue), int.Parse(txtNroDoc.Text)))
+                {
+                    lblExiste.Text = "Paciente ya registrado";
+                }
+
+                else
+                { 
+                Paciente emp = new Paciente();
+
+                if (txtApellido.Text != String.Empty)
+                { emp.apellido = txtApellido.Text; }
+                if (txtNombre.Text != String.Empty)
+                { emp.nombre = txtNombre.Text; }
+                if (txtDomicilio.Text != String.Empty)
+                { emp.domicilio = txtDomicilio.Text; }
+                if (txtTelefono.Text != String.Empty)
+                { emp.telefono = int.Parse(txtTelefono.Text); }
+                if (txtFechaNacimiento.Text != String.Empty)
+                {
+                    DateTime fecha;
+                    if (DateTime.TryParse(txtFechaNacimiento.Text, out fecha))
+                        emp.fecha_nacimiento = fecha;
+                }
+
+              
+                if(ddlBarrio.SelectedValue != "")
+                {
+
+                    emp.id_barrio = int.Parse(ddlBarrio.SelectedValue);
+                }
+               
+                emp.id_sexo = int.Parse(ddlSexo.SelectedValue);
+
+                emp.id_tipo_doc = int.Parse(ddlTipoDoc.SelectedValue);
+
+                if (txtNroDoc.Text != String.Empty)
+                { emp.num_documento = int.Parse(txtNroDoc.Text); }
+
+                int id = ObraSocialDao.ObtenerIDObraSocial(txtCity.Text);
+                emp.id_obra_social = id;
+
+                if (txtEmail.Text != String.Empty)
+                { emp.email = txtEmail.Text; }
+
+                if (txtNroObraSocial.Text != String.Empty)
+                { emp.nro_obra_social = txtNroObraSocial.Text; }
+
+                //s.id_sexo = radSexo.SelectedIndex + 1;
+
+                lblGuardar.Text = PacienteDao.Insertar(emp);
+                lblGuardar.Visible = true;
+
+                Response.Redirect("ConsultaPacientesInterfaz.aspx");
+                    //btnEliminar.CssClass = "btn btn-warning";
+                    //btnEliminar.Enabled = true;
+                    //CargarGrillaEmpresas();
+                    //Limpiar();
+
+                }
             }
-            emp.id_barrio = int.Parse(ddlBarrio.SelectedValue);
-            emp.id_sexo = int.Parse(ddlSexo.SelectedValue);
-            emp.id_tipo_doc = int.Parse(ddlTipoDoc.SelectedValue);
-
-            if (txtNroDoc.Text != String.Empty)
-            { emp.num_documento = int.Parse(txtNroDoc.Text); }
             
-            int id = ObraSocialDao.ObtenerIDObraSocial(txtCity.Text);
-            emp.id_obra_social = id;
-
-            if (txtEmail.Text != String.Empty)
-            { emp.email = txtEmail.Text; }
-
-            if (txtNroObraSocial.Text != String.Empty)
-            { emp.nro_obra_social = txtNroObraSocial.Text; }
-
-            //s.id_sexo = radSexo.SelectedIndex + 1;
-
-            lblGuardar.Text = PacienteDao.Insertar(emp);
-            lblGuardar.Visible = true;
-
-            Response.Redirect("ConsultaPacientesInterfaz.aspx");
-            //btnEliminar.CssClass = "btn btn-warning";
-            //btnEliminar.Enabled = true;
-            //CargarGrillaEmpresas();
-            //Limpiar();
-
-
         }
 
         protected void cargarProvincias()
@@ -182,8 +202,7 @@ namespace HLP
         }
 
         protected void butConsultaPaciente_Click(object sender, EventArgs e)
-        {
-            
+        {     
           
 
             Paciente p = new Paciente();
@@ -206,7 +225,7 @@ namespace HLP
                 { txtNombre.Text = p.nombre; }
                 
                 ddlSexo.SelectedValue = p.id_sexo.ToString();
-                txtFechaNacimiento.Text = p.fecha_nacimiento.ToString();
+                txtFechaNacimiento.Text =p.fecha_nacimiento.ToShortDateString();
 
                 if (p.domicilio != null)
                 { txtDomicilio.Text = p.domicilio; }
@@ -275,5 +294,9 @@ namespace HLP
         }
 
         
+        protected void btnConsultar_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("ConsultaPacientesInterfaz.aspx");
+        }
     }
 }

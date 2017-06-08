@@ -2,9 +2,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-        <asp:Panel ID="pnlConsulta" runat="server">
+        <asp:Panel ID="pnlConsulta" runat="server" HorizontalAlign="Center">
 
-            <h3>HISTORIA CLINICA</h3>
+            <h3>HISTORIAS CLINICAS</h3>
 
         </asp:Panel>
 
@@ -15,13 +15,13 @@
                 <th>
                     <div>
 
-                        <label runat="server" class="control-label col-sm-2" for="TipoDoc">Tipo Documento:</label><br />
+                        <label runat="server" class="control-label col-sm-2" for="TipoDoc">Tipo Documento:</label><br /><br />
                         <asp:DropDownList ID="ddlTipoDoc" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddlTipoDoc_SelectedIndexChanged" Width="200px" />
                     </div>
                 </th>
                 <th>
                     <div>
-                        <label class="control-label col-sm-2" for="NroDoc">Número Documento:</label><br />
+                        <label class="control-label col-sm-2" for="NroDoc">N° Documento:</label><br /><br />
                         <asp:TextBox ID="txtNroDoc" runat="server" AutoCompleteType="Enabled" ClientIDMode="Static" CssClass="form-control" />
                         <asp:RequiredFieldValidator ID="rfvNroDoc" runat="server" ControlToValidate="txtNroDoc" />
                         <asp:RegularExpressionValidator ID="revNroDoc" runat="server" ControlToValidate="txtNroDoc" Display="Dynamic" CssClass="Validador" ValidationExpression="(\d)+" ErrorMessage="Número de documento no válido" ForeColor="Red"></asp:RegularExpressionValidator>
@@ -30,15 +30,15 @@
                 <th>
                     <div>
                         <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnconsultaPaciente" runat="server" CssClass="btn btn-primary" OnClick="butConsultaPaciente_Click" Text="Existe" ValidationGroup="A" /><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnconsultaPaciente" runat="server" CssClass="btn btn-primary" OnClick="butConsultaPaciente_Click" Text="Buscar Paciente" ValidationGroup="A" /><br />
                         <asp:Label ID="lblExiste" runat="server" ForeColor="Red" Visible="False">Paciente no encontrado.</asp:Label>
                     </div>
 
                 </th>
             </tr>
         </table>
-        <label runat="server" class="control-label col-sm-2" for="Nombre">Nombre:</label>
-        <asp:TextBox ID="txtNombrePac" runat="server"></asp:TextBox>
+        <label runat="server" class="control-label col-sm-2" for="Nombre">Paciente:</label>
+        <asp:TextBox ID="txtNombrePac" runat="server"></asp:TextBox><br />
         <br />
         <label runat="server" class="control-label col-sm-2" for="TipoDoc">Antecedentes:</label>
 
@@ -54,9 +54,8 @@
 
         <asp:GridView ID="dgvDetallesHC" runat="server"></asp:GridView>
 
-        <asp:Button ID="btnAgregarDHC" runat="server" Text="Nueva Atención" OnClick="btnAgregarDHC_Click" />
-
-
+        <asp:Button ID="btnAgregarDHC" runat="server" CssClass="btn btn-primary" BackColor="#CC3366" Text="Nueva Atención" OnClick="btnAgregarDHC_Click" />
+       
         <asp:Panel ID="pnNuevoDetalle" Visible="false" runat="server">
             <asp:Label ID="Label1" runat="server" Text="Fecha:"></asp:Label>
             <asp:Label ID="lblFecha" runat="server" Text=""></asp:Label>
@@ -79,7 +78,7 @@
 
     <script type="text/javascript">  
         $(function () {
-            $("#MainContent_txtEsp").autocomplete({
+            $("##MainContent_txtEsp).autocomplete({
                 source: function (request, response) {
                     var param = { cityname: $('#MainContent_txtEsp').val() };
                     $.ajax({
@@ -165,14 +164,7 @@
 
 
         })
-
-
-
-
-
-
-
-
+        
     </script>
 
 </asp:Content>

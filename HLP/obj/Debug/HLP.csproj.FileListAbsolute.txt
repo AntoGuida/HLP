@@ -187,6 +187,7 @@ C:\Users\Janet\Documents\HLP\HLP\HLP\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Janet\Documents\HLP\HLP\HLP\bin\Newtonsoft.Json.dll
 C:\Users\Janet\Documents\HLP\HLP\HLP\bin\System.Web.Optimization.dll
 C:\Users\Janet\Documents\HLP\HLP\HLP\bin\WebGrease.dll
+C:\Users\Janet\Documents\HLP\HLP\HLP\bin\DAO.pdb
 C:\Users\Janet\Documents\HLP\HLP\HLP\bin\ENTIDADES.pdb
 C:\Users\Janet\Documents\HLP\HLP\HLP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Janet\Documents\HLP\HLP\HLP\bin\System.Web.Optimization.xml
@@ -203,4 +204,3 @@ C:\Users\Janet\Documents\HLP\HLP\HLP\bin\es\Microsoft.AspNet.FriendlyUrls.resour
 C:\Users\Janet\Documents\HLP\HLP\HLP\obj\Debug\HLP.csprojResolveAssemblyReference.cache
 C:\Users\Janet\Documents\HLP\HLP\HLP\obj\Debug\HLP.dll
 C:\Users\Janet\Documents\HLP\HLP\HLP\obj\Debug\HLP.pdb
-C:\Users\Janet\Documents\HLP\HLP\HLP\bin\DAO.pdb

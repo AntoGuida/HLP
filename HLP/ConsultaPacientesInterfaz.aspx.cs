@@ -27,7 +27,7 @@ namespace HLP
             Conexion c = new Conexion();
             SqlConnection cnn = c.abrirConexion();
 
-            SqlCommand cm = new SqlCommand(string.Format("SELECT  p.apellido as 'Apellido', p.nombre as 'Nombre', td.nombre as 'Tipo Documento', p.num_doc as 'Número', (CAST(DATEDIFF(DD, p.fecha_nacimiento, GETDATE())/365.25 as int)) as 'Edad', p.fecha_alta as 'Fecha Alta' FROM Paciente p INNER JOIN TipoDoc td on p.id_tipo_doc = td.id_tipo_doc"));
+            SqlCommand cm = new SqlCommand(string.Format("SELECT  p.apellido as 'Apellido', p.nombre as 'Nombre', td.nombre as 'Tipo Documento', p.num_doc as 'Número', (CAST(DATEDIFF(DD, p.fecha_nacimiento, GETDATE())/365.25 as int)) as 'Edad', p.fecha_alta as 'Fecha Alta' FROM Paciente p INNER JOIN TipoDoc td on p.id_tipo_doc = td.id_tipo_doc ORDER BY p.apellido"));
             cm.Connection = cnn;
             SqlDataAdapter da = new SqlDataAdapter(cm);
             dt = new DataTable();
@@ -44,17 +44,23 @@ namespace HLP
 
         protected void ordenar(object sender, GridViewSortEventArgs e)
         {
-            DataTable dt = dgvPaciente.DataSource as DataTable;
+            dgvPaciente.Sort(dgvPaciente.Columns[1].ToString(), SortDirection.Descending);
+            //DataTable dt = dgvPaciente.DataSource as DataTable;
 
-            if (dt != null)
-            {
-                DataView dv = new DataView(dt);
-                dt.DefaultView.Sort = e.SortExpression + " ASC";
-                dgvPaciente.DataSource = dv;
-                dgvPaciente.DataBind();
+            //if (dt != null)
+            //{
+            //    DataView dv = new DataView(dt);
+            //    dt.DefaultView.Sort = e.SortExpression + " ASC";
+            //    dgvPaciente.DataSource = dv;
+            //    dgvPaciente.DataBind();
 
-            }
+            //}
         }
+
+
+
+
+
 
         public DataTable tabla()
         {
@@ -70,7 +76,18 @@ namespace HLP
 
             return dt;
         }
+
+        protected void dgvPaciente_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView gv = (GridView)sender;
+            gv.PageIndex = e.NewPageIndex;
+            cargarGrilla();
+
+        }
     }
+
+
+
 
 
 }

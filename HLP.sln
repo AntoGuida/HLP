@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLP", "HLP\HLP.csproj", "{221CE921-A3B5-4174-86F2-22540B8FDB84}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO\DAO.csproj", "{4D31A8E5-C358-4089-B219-68EFCBDFB5C6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ENTIDADES", "ENTIDADES\ENTIDADES.csproj", "{AD61DCFC-B864-40A6-9EBE-C9E9F0637270}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{59D0594F-FF3F-4C2A-83D2-2BD0124EA9DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{AD61DCFC-B864-40A6-9EBE-C9E9F0637270}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD61DCFC-B864-40A6-9EBE-C9E9F0637270}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD61DCFC-B864-40A6-9EBE-C9E9F0637270}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59D0594F-FF3F-4C2A-83D2-2BD0124EA9DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59D0594F-FF3F-4C2A-83D2-2BD0124EA9DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59D0594F-FF3F-4C2A-83D2-2BD0124EA9DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59D0594F-FF3F-4C2A-83D2-2BD0124EA9DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -53,6 +53,17 @@ namespace DAO
             return listPaciente;
         }
 
+        public static string ValidarApellido(string apellido)
+        {
+            string res = "";
+
+            if (apellido != String.Empty)
+            {
+                res = "ConDatos";
+            }
+
+            return res;
+        }
 
         public static string Insertar(Paciente e1)
         {
@@ -69,22 +80,54 @@ namespace DAO
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandText = @"insert into Paciente 
-                                values(@apellido,@nombre,@domicilio,@telefono,@id_barrio,@id_sexo,@id_tipo_doc,@num_doc,@fecha_nacimiento
+                                values(@apellido,@nombre, @domicilio, @telefono,@id_barrio,@id_sexo,@id_tipo_doc,@num_doc,@fecha_nacimiento
                                         ,@id_obra_social,@email,@nro_obra_social, @fecha_alta)";
 
 
                 cmd.Parameters.AddWithValue("@apellido", e1.apellido);
                 cmd.Parameters.AddWithValue("@nombre", e1.nombre);
-                cmd.Parameters.AddWithValue("@domicilio", e1.domicilio);
-                cmd.Parameters.AddWithValue("@telefono", e1.telefono);
-                cmd.Parameters.AddWithValue("@id_barrio", e1.id_barrio);//VEEEER-- Es porque en paciente se llama id_barrio el objeto BARRIO
+
+
+                if (e1.domicilio != null)
+                { cmd.Parameters.AddWithValue("@domicilio", e1.domicilio); }
+                else { cmd.Parameters.AddWithValue("@domicilio", DBNull.Value); }
+
+
+                if (e1.telefono !=0)
+                {
+                    cmd.Parameters.AddWithValue("@telefono", e1.telefono);
+                }
+
+                else { cmd.Parameters.AddWithValue("@telefono", DBNull.Value); }
+
+
+
+                if (e1.id_barrio != 0)
+                {
+                    cmd.Parameters.AddWithValue("@id_barrio", e1.id_barrio);
+                }
+                else { cmd.Parameters.AddWithValue("@id_barrio", DBNull.Value); }
+
+
                 cmd.Parameters.AddWithValue("@id_sexo", e1.id_sexo);
+
                 cmd.Parameters.AddWithValue("@id_tipo_doc", e1.id_tipo_doc);
+
                 cmd.Parameters.AddWithValue("@num_doc", e1.num_documento);
-                cmd.Parameters.AddWithValue("@fecha_nacimiento", e1.fecha_nacimiento);                
+
+                cmd.Parameters.AddWithValue("@fecha_nacimiento", e1.fecha_nacimiento);   
+                
                 cmd.Parameters.AddWithValue("@id_obra_social", e1.id_obra_social);
-                cmd.Parameters.AddWithValue("@email", e1.email);
-                cmd.Parameters.AddWithValue("@nro_obra_social", e1.nro_obra_social);
+
+                if (e1.email != null)
+                { cmd.Parameters.AddWithValue("@email", e1.email); }
+                else { cmd.Parameters.AddWithValue("@email", DBNull.Value); }
+
+                if (Convert.ToString(e1.nro_obra_social) != null)
+                { cmd.Parameters.AddWithValue("@nro_obra_social", e1.nro_obra_social); }
+                else
+                { cmd.Parameters.AddWithValue("@nro_obra_social", DBNull.Value); }
+                    
                 cmd.Parameters.AddWithValue("@fecha_alta", System.DateTime.Today);
 
                 //Cerrar siempre la conexion
@@ -112,6 +155,36 @@ namespace DAO
             return script;
         }
 
+        public static Boolean ExistePaciente(int id_tipo_doc, int num_doc)
+        {
+            Boolean rta = false;
+
+            Paciente p = null;
+            //1. Abrir la conexion
+            Conexion c = new Conexion();
+            SqlConnection cnn = c.abrirConexion();
+
+            //2. Crear el objeto command para ejecutar el insert
+            SqlCommand cmm = new SqlCommand();
+            cmm.Connection = cnn;
+            cmm.CommandText = @"SELECT * from Paciente Pac
+                                where Pac.id_tipo_doc = @id_tipo_doc and Pac.num_doc=@num_doc";
+            cmm.Parameters.AddWithValue("@id_tipo_doc", id_tipo_doc);
+            cmm.Parameters.AddWithValue("@num_doc", num_doc);
+            SqlDataReader dr = cmm.ExecuteReader();
+            if (dr.Read())
+            {
+                rta = true;
+            }
+
+            dr.Close();
+            c.cerrarConexion();
+            return rta;
+
+
+        }
+
+
         public static Paciente ObtenerPorDNI(int id_tipo_doc, int num_doc)
         {
              Paciente p = null;
@@ -122,7 +195,7 @@ namespace DAO
             //2. Crear el objeto command para ejecutar el insert
             SqlCommand cmm = new SqlCommand();
             cmm.Connection = cnn;
-            cmm.CommandText = @"SELECT Convert(varchar(10),pac.fecha_nacimiento,103) as fecha_nacimientos, Pac.*, OS.nombre as nos, P.id_provincia as id_provincia, L.id_localidad as id_localidad
+            cmm.CommandText = @"SELECT CAST(fecha_nacimiento AS VARCHAR(12)) as fecha_nacimientos, Pac.*, OS.nombre as nos, P.id_provincia as id_provincia, L.id_localidad as id_localidad
                                 FROM PACIENTE Pac
                                 INNER JOIN TipoDoc TD ON Pac.ID_TIPO_DOC=TD.ID_TIPO_DOC
                                 INNER JOIN BARRIO b ON Pac.id_barrio = b.id_barrio
@@ -150,7 +223,7 @@ namespace DAO
                 else p.id_sexo = 2;               
                 p.id_tipo_doc = int.Parse(dr["id_tipo_doc"].ToString());
                 p.num_documento = int.Parse(dr["num_doc"].ToString());
-                p.fecha_nacimiento = DateTime.Parse(dr["fecha_nacimientos"].ToString());
+                p.fecha_nacimiento = Convert.ToDateTime(dr["fecha_nacimientos"].ToString());
                 p.id_obra_social = int.Parse(dr["id_obra_social"].ToString());
                 p.email = dr["email"].ToString();
                 p.nombre_obra_social = dr["nos"].ToString();
@@ -216,7 +289,7 @@ namespace DAO
             //2. Crear el objeto command para ejecutar el insert
             SqlCommand cmm = new SqlCommand();
             cmm.Connection = cnn;
-            cmm.CommandText = @"SELECT axp.id_paciente as id_paciente, Pac.nombre as nombrePac, axp.id_antecedente as id_antecedente, A.nombre as nombreAnte
+            cmm.CommandText = @"SELECT axp.id_paciente as id_paciente, Pac.nombre as nombrePac, Pac.apellido as apellidoPac, axp.id_antecedente as id_antecedente, A.nombre as nombreAnte
                                 FROM PACIENTE Pac
                                 INNER JOIN TipoDoc TD ON Pac.ID_TIPO_DOC=TD.ID_TIPO_DOC
                                 INNER JOIN BARRIO b ON Pac.id_barrio = b.id_barrio
@@ -239,6 +312,8 @@ namespace DAO
                 paciente.nombreAnte = dr["nombreAnte"].ToString();            
                 paciente.id_antecedente= int.Parse(dr["id_antecedente"].ToString());           
                 paciente.nombrePaciente = dr["nombrePac"].ToString();
+                paciente.apellidoPaciente= dr["apellidoPac"].ToString();
+
 
                 lista.Add(paciente);
 

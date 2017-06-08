@@ -44,14 +44,23 @@ namespace HLP
                 {
                     AntXPac paciente = new AntXPac();
                     paciente = lista[i];
-                    txtNombrePac.Text = paciente.nombrePaciente;                    
-                    ant += paciente.nombreAnte + "-" + "\n";
+                    txtNombrePac.Text = paciente.apellidoPaciente + ", " + paciente.nombrePaciente;                    
+                    ant+= paciente.nombreAnte + ",";
                 }
 
                 txtAntecedentes.Text = ant;
                 
             }
 
+        }
+
+        [WebMethod]
+        public static List<string> GetEsp(string cityname)
+        {
+
+            List<String> lista = new List<String>();
+            lista = EspecialidadDao.VectorEspecialidad(cityname);
+            return lista;
         }
 
         protected void btnAgregarDHC_Click(object sender, EventArgs e)
@@ -77,15 +86,6 @@ namespace HLP
 
 
         [WebMethod]
-        public static List<string> GetEsp(string cityname)
-        {
-
-            List<String> lista = new List<String>();
-            lista = EspecialidadDao.VectorEspecialidad(cityname);
-            return lista;
-        }
-
-        [WebMethod]
         public static List<string> GetPrac(string cityname)
         {
 
@@ -103,4 +103,7 @@ namespace HLP
             return lista;
         }
     }
+
+
+   
 }

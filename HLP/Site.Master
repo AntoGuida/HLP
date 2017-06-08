@@ -52,8 +52,9 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/PacienteInterfaz.aspx">Pacientes</a></li>
-                        <li><a runat="server" href="~/HistoriaClinica.aspx">Historia Clínica</a></li>
+                        <li><a runat="server" href="~/PacienteInterfaz.aspx">Registrar Pacientes</a></li>
+                        <li><a runat="server" href="~/ConsultaPacientesInterfaz.aspx">Consultar Pacientes</a></li>
+                        <li><a runat="server" href="~/HistoriaClinica.aspx">Historias Clínicas</a></li>
                     </ul>
                 </div>
             </div>

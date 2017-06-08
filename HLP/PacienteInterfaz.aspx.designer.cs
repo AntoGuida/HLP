@@ -40,6 +40,15 @@ namespace HLP {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoDoc;
         
         /// <summary>
+        /// Control reqTipoDoc.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqTipoDoc;
+        
+        /// <summary>
         /// Control txtNroDoc.
         /// </summary>
         /// <remarks>
@@ -49,13 +58,13 @@ namespace HLP {
         protected global::System.Web.UI.WebControls.TextBox txtNroDoc;
         
         /// <summary>
-        /// Control rfvNroDoc.
+        /// Control reqtxtNroDoc.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNroDoc;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqtxtNroDoc;
         
         /// <summary>
         /// Control revNroDoc.
@@ -94,6 +103,15 @@ namespace HLP {
         protected global::System.Web.UI.WebControls.TextBox txtApellido;
         
         /// <summary>
+        /// Control reqtxtApellido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqtxtApellido;
+        
+        /// <summary>
         /// Control revApellido.
         /// </summary>
         /// <remarks>
@@ -110,6 +128,15 @@ namespace HLP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
+        
+        /// <summary>
+        /// Control reqtxtNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqtxtNombre;
         
         /// <summary>
         /// Control revNombre.
@@ -139,13 +166,22 @@ namespace HLP {
         protected global::System.Web.UI.WebControls.TextBox txtFechaNacimiento;
         
         /// <summary>
-        /// Control revfecha_nacimiento.
+        /// Control reqtxtFecha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator revfecha_nacimiento;
+        protected global::System.Web.UI.WebControls.CompareValidator reqtxtFecha;
+        
+        /// <summary>
+        /// Control RequiredFieldValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// Control txtDomicilio.
@@ -211,6 +247,15 @@ namespace HLP {
         protected global::System.Web.UI.WebControls.TextBox txtCity;
         
         /// <summary>
+        /// Control reqtxtCity.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqtxtCity;
+        
+        /// <summary>
         /// Control txtNroObraSocial.
         /// </summary>
         /// <remarks>
@@ -263,5 +308,14 @@ namespace HLP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button butEliminarConfirmar;
+        
+        /// <summary>
+        /// Control btnConsultar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConsultar;
     }
 }

@@ -21,7 +21,7 @@
 
 
     <asp:Panel runat="server" HorizontalAlign="Center">
-        <asp:GridView ID="dgvPaciente" class="table" runat="server" AllowSorting="true" OnSorting="ordenar" Width="564px" HorizontalAlign="Center">
+        <asp:GridView ID="dgvPaciente" class="table" runat="server" AllowPaging="true" AllowSorting="true" OnSorting="ordenar" Width="564px" HorizontalAlign="Center" PageSize="5" OnPageIndexChanging="dgvPaciente_PageIndexChanging" >
         </asp:GridView>
     </asp:Panel>
 </asp:Content>
