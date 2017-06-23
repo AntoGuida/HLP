@@ -124,9 +124,10 @@ namespace HLP
                 if (txtNroObraSocial.Text != String.Empty)
                 { emp.nro_obra_social = txtNroObraSocial.Text; }
 
-                //s.id_sexo = radSexo.SelectedIndex + 1;
+                    //s.id_sexo = radSexo.SelectedIndex + 1;
 
-                lblGuardar.Text = PacienteDao.Insertar(emp);
+
+                    lblGuardar.Text = PacienteDao.Insertar(emp);
                 lblGuardar.Visible = true;
 
                 Response.Redirect("ConsultaPacientesInterfaz.aspx");
@@ -202,9 +203,12 @@ namespace HLP
         }
 
         protected void butConsultaPaciente_Click(object sender, EventArgs e)
-        {     
-          
+        {
+            ValidarPaciente();
+        }
 
+        public void ValidarPaciente()
+        {
             Paciente p = new Paciente();
             p = PacienteDao.ObtenerPorDNI(int.Parse(ddlTipoDoc.SelectedValue), int.Parse(txtNroDoc.Text));
 
@@ -223,9 +227,9 @@ namespace HLP
                 { txtApellido.Text = p.apellido; }
                 if (p.nombre != null)
                 { txtNombre.Text = p.nombre; }
-                
+
                 ddlSexo.SelectedValue = p.id_sexo.ToString();
-                txtFechaNacimiento.Text =p.fecha_nacimiento.ToShortDateString();
+                txtFechaNacimiento.Text = p.fecha_nacimiento.ToShortDateString();
 
                 if (p.domicilio != null)
                 { txtDomicilio.Text = p.domicilio; }
@@ -236,7 +240,7 @@ namespace HLP
                 ddlLocalidad.SelectedValue = p.id_localidad.ToString();
                 cargarBarrios();
                 ddlBarrio.SelectedValue = p.id_barrio.ToString();
-                
+
                 txtTelefono.Text = p.telefono.ToString();
                 if (txtEmail.Text != null)
                 { txtEmail.Text = p.email; }
@@ -246,7 +250,6 @@ namespace HLP
                 txtCity.Text = p.nombre_obra_social.ToString();
 
             }
-
         }
 
 
@@ -297,6 +300,11 @@ namespace HLP
         protected void btnConsultar_Click1(object sender, EventArgs e)
         {
             Response.Redirect("ConsultaPacientesInterfaz.aspx");
+        }
+
+        protected void txtNroDoc_TextChanged(object sender, EventArgs e)
+        {
+            ValidarPaciente();
         }
     }
 }

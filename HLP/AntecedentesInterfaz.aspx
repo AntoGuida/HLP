@@ -22,6 +22,10 @@
             <asp:Label ID="lblNombre"  runat="server" HorizontalAlign="Center" Text="Label"></asp:Label>
             <br />
             <br />
+            <asp:Label ID="Label4" runat="server" ForeColor="Red" HorizontalAlign="Center" Text="Observaciones:"></asp:Label>
+            <br />
+            <asp:TextBox ID="txtobs" runat="server" Height="96px" Width="766px"></asp:TextBox>
+            <br />
         </div>
         <asp:CheckBoxList ID="chkAnt1" runat="server" Width="130px" >
         </asp:CheckBoxList>

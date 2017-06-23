@@ -58,6 +58,12 @@ namespace HLP
 
             }
 
+            int id_pac = int.Parse(Request.QueryString["id_pac"]);
+
+            p = PacienteDao.ObtenerPorID(id_pac);
+
+            txtobs.Text = p.observaciones;
+
 
 
         }
@@ -68,6 +74,15 @@ namespace HLP
             List<int> listaValues = Antecedente.obtenerValues(p.id_paciente);
             Boolean ban = false;
 
+         
+
+
+            int id_pac = int.Parse(Request.QueryString["id_pac"]);
+
+            p = PacienteDao.ObtenerPorID(id_pac);
+
+            if (txtobs.Text != String.Empty)
+            { p.observaciones = txtobs.Text; }
 
             if (listaValues.Count > 0) //tengo antecedentes guardados
             {
@@ -96,7 +111,8 @@ namespace HLP
                             ap.id_paciente = p.id_paciente;
                             ap.id_antecedente = int.Parse(chkAnt1.Items[i].Value);
                             apd.insertarAntPorPac(ap);
-
+                            PacienteDao.InsertarObservacion(p);
+                         
                         }
 
                     }
@@ -115,6 +131,7 @@ namespace HLP
                                 ap.id_paciente = p.id_paciente;
                                 ap.id_antecedente = int.Parse(chkAnt1.Items[i].Value);
                                 apd.eliminarAntPorPac(ap);
+                                PacienteDao.InsertarObservacion(p);
 
                             }
 
@@ -137,7 +154,7 @@ namespace HLP
                         ap.id_paciente = p.id_paciente;
                         ap.id_antecedente = int.Parse(chkAnt1.Items[i].Value);
                         apd.insertarAntPorPac(ap);
-
+                        PacienteDao.InsertarObservacion(p);
                     }
 
 

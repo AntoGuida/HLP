@@ -37,6 +37,8 @@ namespace ENTIDADES
 
         public int? id_localidad { get; set; }
 
+        public string observaciones { get; set; }
+
 
 
 

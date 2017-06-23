@@ -31,7 +31,7 @@ namespace DAO
 
                 cmd.Parameters.AddWithValue("@id_paciente", ap.id_paciente);
                 cmd.Parameters.AddWithValue("@id_antecedente", ap.id_antecedente);
-
+               
 
                 //Cerrar siempre la conexion
                 cmd.ExecuteNonQuery();

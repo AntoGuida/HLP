@@ -15,7 +15,8 @@ namespace DAO
       public   string cadenaConexion()
         {
             
-            return @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=OscorPav2;Integrated Security=True";
+           //return @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=OscorPav2;Integrated Security=True";
+         return @"workstation id=HospitalLP.mssql.somee.com;packet size=4096;user id=HLP_SQLLogin_1;pwd=yzp68l85nd;data source=HospitalLP.mssql.somee.com;persist security info=False;initial catalog=HospitalLP";
         }
 
         //metodo para obtener conexion

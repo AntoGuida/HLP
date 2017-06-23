@@ -33,15 +33,14 @@
                 <th>
                     <div>
                         <label class="control-label col-sm-2" style="text-align: start;"  for="NroDoc">N° Documento:</label><br /><br />
-                        <asp:TextBox ID="txtNroDoc" runat="server" AutoCompleteType="Enabled" ClientIDMode="Static" CssClass="form-control"/>
+                        <asp:TextBox ID="txtNroDoc" runat="server" AutoCompleteType="Enabled" OnTextChanged="txtNroDoc_TextChanged" AutoPostBack="True" ClientIDMode="Static" CssClass="form-control"/>
                         <asp:RequiredFieldValidator ID="reqtxtNroDoc" runat="server" ControlToValidate="txtNroDoc" ErrorMessage="Dato obligatorio"  Font-Italic="true" ForeColor="red" />
                         <asp:RegularExpressionValidator ID="revNroDoc" runat="server" ControlToValidate="txtNroDoc" Display="Dynamic" CssClass="Validador" ValidationExpression="(\d)+" ErrorMessage="Número de documento no válido" ForeColor="Red"></asp:RegularExpressionValidator>
                     </div>
                 </th>
                 <th>
                     <div> <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnconsultaPaciente" runat="server" CssClass="btn btn-primary" OnClick="butConsultaPaciente_Click" Text="Validar Existencia" ValidationGroup="A" /><br />
-                        <asp:Label ID="lblExiste" runat="server" ForeColor="Red" Visible="False">Paciente no encontrado.</asp:Label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%--<asp:Button ID="btnconsultaPaciente" runat="server" CssClass="btn btn-primary" OnClick="butConsultaPaciente_Click" Text="Validar Existencia" ValidationGroup="A" />--%><br /><asp:Label ID="lblExiste" runat="server" ForeColor="Red" Visible="False">Paciente no encontrado.</asp:Label>
                     </div>
 
                 </th>
@@ -197,6 +196,8 @@
                 },
                 minLength: 2//minLength as 2, it means when ever user enter 2 character in TextBox the AutoComplete method will fire and get its source data. 
             });
+
+       
         });
 
     </script>
